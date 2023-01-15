@@ -17,7 +17,7 @@ pre-processed, scaled and ready for modeling.
 
 The target [ ‘Bankrupt?’ ] is imbalanced.  Will need to try SMOTE to handle the situation later.
 
-![Alt Image text](Data/webpages.jpg)
+![Alt Image text](png/imb_target.jpg)
 
 
 ## Modeling and finding
@@ -26,69 +26,69 @@ The target [ ‘Bankrupt?’ ] is imbalanced.  Will need to try SMOTE to handle 
 Firstly, build the dummy model as the baseline model.
 Finding: The accuracy score on training data is 96.96% and 0% on the testing data.  Looking into the confusion matrix, this model can’t predict any positive label.
 
-![Alt Image text](Data/webpages.jpg)
+![Alt Image text](png/cm1_dummy.jpg)
 
 ### Model 2: Logistic Regression Model
 After the dummy model, try the Logistic Regression Model as the first simple model.
 Finding: The accuracy score on training data is 96.67% and 2.16% on the testing data.  Looking into the confusion matrix, this model can pick up a couple 
 positive labels but also increase False Positive and false Negative.
 
-![Alt Image text](Data/webpages.jpg)
+![Alt Image text](png/cm2_logreg.jpg)
 
 ### Model 3: Random Forest Model
 Finding: The accuracy score on training data is 99.98% and 99.28% on the testing data. The accuracy scores are incredible!  How true is that?  Let’s look 
 into the confusion matrix.  This model is doing much better compared to the Dummy Model and Logistic Regression Model.  Especially at training, this model 
 can pick up more positive labels along with only 1 False Negative.  However,  the test result is not as good as training.  So far, this model seems to perform well.
 
-![Alt Image text](Data/webpages.jpg)
+![Alt Image text](png/cm3_rfc.jpg)
 
 ### Model 4: Gradient Booster Model
 Finding: The accuracy score on training data is 99.58% and 86.33% on the testing data.  Also need to look into its confusion matrix.  Compared to the Random 
 Forest Model, this model does a little better at testing.  Will consider to tune and tweak this model for better performance.
 
-![Alt Image text](Data/webpages.jpg)
+![Alt Image text](png/cm4_gbs.jpg)
 
 ### Model 5: Decision Tree Model
 Finding: The accuracy score on training data is 100% and 100% on the testing data.  Looks like we have found the BEST MODEL!  Is this true?  Let’s look into 
 its confusion matrix.  This model is doing better than the Gradient Booster Model but it’s not 100% PERFECT.  This model will generate False Positives and 
 False Negatives as well.  Will tune and tweak this model to see if it gets better results.
 
-![Alt Image text](Data/webpages.jpg)
+![Alt Image text](png/cm5_dtc.jpg)
 
 ### Model 6: Tuning and cross-validating Gradient Booster Model
 Finding: The accuracy score on training data is 97.26% and 16.54% on the testing data.  Look into its confusion matrix.  It doesn’t seem like this model is 
 any better than the Decision Tree Model.
 
-![Alt Image text](Data/webpages.jpg)
+![Alt Image text](png/cm6_tunedgbs.jpg)
 
 ### Model 7: Tuning and cross-validation Decision Tree Model
 Finding: The accuracy score on training data is 97.57% and 30.22% on the testing data.  Now, check its confusion matrix.  This model may perform a little better
 than the tuned Gradient Booster Model.
 
-![Alt Image text](Data/webpages.jpg)
+![Alt Image text](png/cm7_tuneddtc.jpg)
 
 ### Model 8: SMOTE (sampling_strategy = “auto”) with Gradient Booster Model
 Finding: The accuracy score on training data is 96.10% and 93.52% on the testing data.  The accuracy scores look good but we still need to check its confusion 
 matrix.  Looks like SMOTE does perform better than the previous models.
 
-![Alt Image text](Data/webpages.jpg)
+![Alt Image text](png/cm8_smotegbsauto.jpg)
 
 ### Model 9: SMOTE (sampling_strategy = 0.8) with Gradient Booster Model
 Finding: The accuracy score on training data is 96.74% and 92.81% on the testing data.  The accuracy scores are slightly less than the previous model.  Look 
 into its confusion matrix.  Changing the sampling strategy doesn’t seem to make much improvement.
 
-![Alt Image text](Data/webpages.jpg)
+![Alt Image text](png/cm9_smotegbs80.jpg)
 
 ### Model 10: SMOTE with Decision Tree Model
 Finding: The accuracy score on training data is 86.38% and 88.49% on the testing data.  The accuracy scores are smaller than the previous 2 models.  Now, let’s 
 check its confusion matrix.  This model seems to have the least False Negative, however the False Positive is larger than all the other models.
 
-![Alt Image text](Data/webpages.jpg)
+![Alt Image text](png/cm10_smotedtc.jpg)
 
 
 ## Inspect accuracy scores for all models
 
-![Alt Image text](Data/webpages.jpg)
+![Alt Image text](png/score_table.jpg)
 
 By looking at accuracy, recall, precision and F1 sores, it’s extremely hard to determine which is the best model.  If we only look at the accuracy scores, 
 Decision Tree Model seems to be the best model with the perfect scores followed by Random Forest Model and SMOTE with Gradient Booster Model.  Then we consider 
@@ -98,7 +98,7 @@ less overfitting problem.  However, with all the information provided, it is sti
 
 ## Let’s bring in the miss rate
 
-![Alt Image text](Data/webpages.jpg)
+![Alt Image text](png/score_table2.jpg)
 
 If we are doing this research for investors, their main goal is to make profit.  However, they have a bigger concern, which is to put the money into the 
 company who is actually bankrupt but the prediction says they are not (False Negative).  With this concern, we shall bring in the miss rate.
